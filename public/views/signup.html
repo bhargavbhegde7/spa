@@ -1,0 +1,14 @@
+<div class="page-header">
+    <h2>Sign Up</h2>
+</div>
+<form class="form-group" id="signup-form">
+    <div class="input-group">
+	    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+	    <input type="text" class="form-control" placeholder="Username" ng-model="formData.username">
+    </div>
+    <div class="input-group">
+	    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+	    <input type="password" class="form-control" placeholder="Password" ng-model="formData.password">
+    </div>
+    <button class="btn btn-primary btn-group-sm form-submit-btn" ng-click="createUser()">Submit</button>
+</form>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="spaApp">
+
+<head>
+    <title>SPA</title>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+</head>
+
+<body ng-controller="MainCtrl">
+    <nav role="navigation" class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#/" class="navbar-brand">SPA</a>
+        </div>
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-class="{active : isActive('/')}"><a href="#/">Home</a></li>
+                <li  ng-class="{active : isActive('/signup')}"><a href="#/signup">Sign Up</a></li>
+                <li  ng-class="{active : isActive('/login')}"><a href="#/login">Login</a></li>
+                <li ng-class="{active : isActive('/request')}"><a href="#/request">Travel Request</a></li>
+                <li ng-class="{active : isActive('/manager')}"><a href="#/manager">Manager</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div ng-view class="container"></div>
+    
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">Copyright 2015 @ C0de J1had1st</p>
+    </div>
+</footer>
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/controllers/home.js"></script>
+    <script type="text/javascript" src="js/controllers/login.js"></script>
+    <script type="text/javascript" src="js/controllers/signup.js"></script>
+</body>
+</html>
