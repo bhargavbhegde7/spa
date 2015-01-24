@@ -10,9 +10,9 @@ spa.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         templateUrl: 'views/signup.html',
         controller: 'SignupCtrl'
     }).
-    when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+    when('/signin', {
+        templateUrl: 'views/signin.html',
+        controller: 'SigninCtrl'
     })
 }]);
 

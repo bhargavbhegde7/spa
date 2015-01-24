@@ -1,56 +1,45 @@
 html {
-	position: relative; /*Required for Sticky Footer*/
-	min-height: 100%; /*Required for Sticky Footer*/
+    position: relative;
+    /*Required for Sticky Footer*/
+    
+    min-height: 100%;
+    /*Required for Sticky Footer*/
 }
-
 body {
- 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-	text-align: center;
-	background-color: rgb(92,223,135);
-	margin-bottom: 60px; /*Required for Sticky Footer*/
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    text-align: center;
+    background-color: rgb(92, 223, 135);
+    margin-bottom: 60px;
+    /*Required for Sticky Footer*/
+    
+    background: url(../img/intro-bg.jpg) no-repeat center center fixed;
 }
 
-.navbar-default {
-	background-color: rgb(92,173,223);
+#navigation-bar {
+	background-color: #000;
+	border-color: #000;
+}
+#navigation-bar .active a{
+	background-color: rgb(59,67,66);
+}
+#home-screen {
+    color: #fff;
+    font-weight: bold;
+}
+#home-screen .btn {
+    width: 70%;
+}
+#home-screen p {
+    margin: 10px;
 }
 
-.navbar-default .navbar-nav>li>a {
-	color: #fff;
-	font-weight: 700;
+#home-screen div {
+	padding-top: 2%;
 }
-
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
-	color: #fff;
-	background-color: rgb(36,130,188);
-}
-
-.navbar-default .navbar-brand {
-	color: #fff;
-	font-weight: 700;
-	font-size: 20px;
-}
-.input-group {
-	width: 60%;
-	margin: 30px auto;
-}
-
-.form-submit-btn{
-	width: 35%;
-	height: 50px;
-	font-size: 25px;
-}
-button.btn.btn-default.roles-btn{
-	margin: 1em;
-}
-.footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	/* Set the fixed height of the footer here */
-	height: 30px;
-	background-color: #fff;
-}
-
-.footer p.text-muted {
-	font-weight: 700;
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 20px;
 }

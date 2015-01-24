@@ -1,0 +1,43 @@
+
+
+.navbar-default {
+	background-color: rgb(92,173,223);
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #fff;
+	font-weight: 700;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+	color: #fff;
+	background-color: rgb(36,130,188);
+}
+
+.navbar-default .navbar-brand {
+	color: #fff;
+	font-weight: 700;
+	font-size: 20px;
+}
+.input-group {
+	width: 60%;
+	margin: 30px auto;
+}
+
+.form-submit-btn{
+	width: 35%;
+	height: 50px;
+	font-size: 25px;
+}
+
+.page-header {
+	color: #fff;
+}
+button.btn.btn-default.roles-btn{
+	margin: 1em;
+}
+
+.footer p.text-muted {
+	font-weight: 700;
+	color: #fff;
+}

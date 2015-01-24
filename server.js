@@ -11,8 +11,8 @@ var app = express();
 
 
 // view engine setup
-app.set('views', path.join(__dirname, 'public'));
-app.set('view engine', 'jade');
+/*app.set('views', path.join(__dirname, 'public'));
+app.set('view engine', 'jade');*/
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -27,7 +27,7 @@ app.use('/users', users);*/
 //app.use('/',routes.index)
 app.post('/api/login', api.login);
 app.post('/signup/join', user.createUser);
-app.post('/login/check', user.authenticateUser);
+app.get('/login/check', user.authenticateUser);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
