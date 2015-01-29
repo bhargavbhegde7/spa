@@ -11,8 +11,8 @@ body {
     background-color: rgb(92, 223, 135);
     margin-bottom: 60px;
     /*Required for Sticky Footer*/
-    
     background: url(../img/intro-bg.jpg) no-repeat center center fixed;
+    background-size: cover;
 }
 
 #navigation-bar {
