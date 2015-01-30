@@ -13,7 +13,12 @@ spa.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     when('/signin', {
         templateUrl: 'views/signin.html',
         controller: 'SigninCtrl'
-    })
+    }).
+    when('/user', {
+        templateUrl: 'views/user.html',
+        controller: 'UserCtrl'
+    });
+    
 }]);
 
 spa.controller('MainCtrl', function($scope, $location, $rootScope){

@@ -1,0 +1,84 @@
+<a href="" ng-click="userNav('request')">notification</a>
+<a href="" ng-click="userNav('form')">place a request</a>
+<a href="">logout</a>
+
+<div id="user-notification" ng-show="showNots">
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Request ID</td>
+                <td>Travel Date From</td>
+                <td>Status</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="travelRequest in travelRequests">
+                <td>{{travelRequest.travelid}}</td>
+                <td>{{travelRequest.travelDateFrom}}</td>
+                <td>{{travelRequest.status}}</td>
+                <td>
+                    <input type="button" value="View" ng-click="showTravelRequest(travelRequest.travelid)">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="user-request-form" ng-show="showForm">
+    <h4>Mode of transport</h4>
+    <label>
+        <input type="radio" value="airways" name="transport_mode" ng-model="travelRequest.transportMode" /> Airways</label>
+    <label>
+        <input type="radio" value="railway" name="transport_mode" ng-model="travelRequest.transportMode" /> Rail</label>
+    <label>
+        <input type="radio" value="road" name="transport_mode" ng-model="travelRequest.transportMode" /> Road</label>
+    <h4>Travel Details</h4>
+    <br/>
+    <label>Travel date from
+        <input type="date" name="traveldatefrom" ng-model="travelRequest.travelDateFrom" />
+    </label>
+    <br/>
+    <label>Travel date to
+        <input type="date" name="traveldateto" ng-model="travelRequest.travelDateTo" />
+    </label>
+    <br/>
+    <label>
+        Currency Required
+        <input type="number" name="currency" ng-model="travelRequest.currencyAmount" />
+        <select ng-model="travelRequest.currencyType" ng-options="currencyType as currencyType.label for currencyType in currencies">
+        </select>
+    </label>
+    <br/>
+    <h4>Phone Details</h4>
+    <label>
+        <input type="radio" value="onlysim" name="phoneDetail" ng-model="travelRequest.phoneDetail" />Only SIM Card</label>
+    <label>
+        <input type="radio" value="mobilewithsim" name="phoneDetail" ng-model="travelRequest.phoneDetail" />Mobile with SIM card</label>
+    <label>
+        <input type="radio" value="landline" name="phoneDetail" ng-model="travelRequest.phoneDetail" />Landline</label>
+    <br/>
+    <h4>Per Dime Details</h4>
+    <label>
+        <input type="radio" value="halfAllowance" name="dailycurrency" ng-model="travelRequest.perDime" />50</label>
+    <label>
+        <input type="radio" value="fullAllowance" name="dailycurrency" ng-model="travelRequest.perDime" />100</label>
+    <br/>
+    <label>
+        <input type="checkbox" value="true" name="laundryneed" ng-model="travelRequest.laundryAllowance" />Laundry Allowance Needed</label>
+    <label>
+        <input type="checkbox" value="true" name="foodneed" ng-model="travelRequest.foodAllowance" />Food Allowance Needed</label>
+    <h4>Meal Pref</h4>
+    <label>
+        <input type="radio" value="mealprefveg" name="mealpref" ng-model="travelRequest.mealType" />Veg</label>
+    <label>
+        <input type="radio" value="mealprefnveg" name="mealpref" ng-model="travelRequest.mealType" />N.Veg</label>
+    <br/>
+    <h4>Remarks</h4>
+    <textarea ng-model="travelRequest.remarks"></textarea>
+    <br/>
+    <label>Manger Email ID
+        <input type="email" name="mangeremail" ng-model="travelRequest.managerEmail" />
+    </label>
+    <button class="btn btn-primary" ng-click="postRequest()">SUBMIT</button>
+</div>
