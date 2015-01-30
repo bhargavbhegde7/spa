@@ -29,6 +29,14 @@ spa.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     when('/agent/showRequest', {
         templateUrl: 'views/showagentrequest.html',
         controller: 'AgentShowRequestCtrl'
+    }).
+    when('/manager', {
+        templateUrl: 'views/manager.html',
+        controller: 'ManagerRequestCtrl'
+    }).
+    when('/manager/showRequest', {
+        templateUrl: 'views/showmanagerrequest.html',
+        controller: 'ManagerShowRequestCtrl'
     });
     
 }]);

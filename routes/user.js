@@ -10,6 +10,7 @@ mongoose.connect('mongodb://localhost:27017/test');
 
 var userData = mongoose.model('userData', userSchema,'userData');
 
+exports.uData=userData;
 exports.createUser = function (req, res) {	
 	var data = new userData ({
 		userid : new Date().getTime(),

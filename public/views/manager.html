@@ -1,0 +1,33 @@
+<a href="" ng-click="getTravelRequests( )">Notification</a>
+<a href="">logout</a>
+
+<div id="user-notification">
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Request ID</td>
+                <td>Travel Date From</td>
+                <td>Status</td>
+                <td>View Action</td>
+                <td>Approve Action</td>
+                <td>Reject Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="travelRequest in travelRequests">
+                <td>{{travelRequest.travelid}}</td>
+                <td>{{travelRequest.travelDateFrom}}</td>
+                <td>{{travelRequest.status}}</td>
+                <td>
+                    <input type="button" value="View" ng-click="showTravelRequest(travelRequest.travelid)">
+                </td>
+                <td>
+                    <input type="button" value="Approve" ng-click="approveTravelRequest(travelRequest.travelid)">
+                </td>
+                <td>
+                    <input type="button" value="Reject" ng-click="rejectTravelRequest(travelRequest.travelid)">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -6,8 +6,6 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
 });
 
-module.exports = function(includeFile){
-    return require('./'+includeFile);
-};
+
 
 module.exports = router;

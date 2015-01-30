@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 var travelData = require('./travel.js');
+var userData = require('./user.js');
 var nodemailer = require('nodemailer');
 exports.getNotifications=function(req,res){
-    var st = "pendingQuote";
-    var sta = "pendingApproval"
-    travelData.tData.find({ $or:[{"status":st},{"status":sta}]}).exec(function (err, data) {
+    var st = "quotationUploaded";
+    travelData.tData.find({"status":st}).exec(function (err, data) {
         if (err) {
             console.log('Error : ',err)
         }
@@ -13,76 +13,97 @@ exports.getNotifications=function(req,res){
 }
 
 exports.getRequest=function(req,res){
-    if (req.body.userRole === "Agent") {
+    if (req.body.userRole === "Manager") {
         var id=req.body.travelid;
-        travelData.tData.find({"travelid":id}).exec(function (err, data) {
+        travelData.tData.findOne({"travelid":id}).exec(function (err, data) {
         if (err) {
             console.log('Error : ',err)
         }
-        res.json(data[0]);
+        res.json(data);
     });
     }
 }
 
-exports.submitQuote=function(req,res){
-        console.dir(req.body.travelid);
-        travelData.tData.findOne({ travelid: req.body.travelid },function(err, data) {
-            if (err) {
-                console.log('Error : ' + err)
-            }
-            console.dir(data);
-            var t = data;
-            t.agentComments = req.body.agentComments;
-            t.agentQuote = req.body.agentQuote;
-            t.status='pendingApproval';
-            console.dir(t);    
-            t.save(function(err,datar) {
-              if (err)
-                console.log('error');
-              else
-                res.json(datar);
-            });
-           
-         
-        });
-}
-
-exports.uploadRequest=function(req,res){
-    console.log("dipesh="+ req.body.travelid)
+exports.approveRequest=function(req,res){
    travelData.tData.findOne({ travelid: req.body.travelid },function(err, data) {
-    var transporter = nodemailer.createTransport({
-            service: 'Gmail',
-            auth: {
-                user: 'dipgupta1986@gmail.com',
-                pass: '102515209google'
-            }
-        });
-
-       var mailOptions = {
-            from: 'Dipesh Gupta✔ <dipgupta1986@gmail.com>', // sender address
-            to: data.managerEmail, // list of receivers
-            subject: "Travel Request Quotation for request Id:"+data.travelid, // Subject line
-            //text: 'Hello world ✔', // plaintext body
-            html: createHtmlBody(data) // html body
-        };
-        transporter.sendMail(mailOptions, function(error, info){
-            if(error){
-                console.log(error);
-            }else{
-                console.log('Message sent: ' + info.response);
-            }
-        });
+   	userData.uData.findOne({userid:data.userid},function(err, datau) {
         var t = data;
-        t.status ="quotationUploaded";
+        t.status ="approved";
         t.save(function(err,datar) {
               if (err)
                 console.log('error');
-              else
-                res.json(datar);
+                  var transporter = nodemailer.createTransport({
+                    service: 'Gmail',
+                    auth: {
+                        user: 'dipgupta1986@gmail.com',
+                        pass: 'password'
+                    }
+                });
+
+               var mailOptions = {
+                    from: 'Dipesh Gupta✔ <dipgupta1986@gmail.com>', // sender address
+                    to: datau.email, // list of receivers
+                    subject: "Travel Request Quotation for request Id:"+data.travelid, // Subject line
+                    //text: 'Hello world ✔', // plaintext body
+                    html: createHtmlBody(datar) // html body
+                };
+                transporter.sendMail(mailOptions, function(error, info){
+                    if(error){
+                        console.log(error);
+                    }else{
+                        console.log('Message sent: ' + info.response);
+                    }
+                });
+
+            });
+   	
+        
+        
+
+        });   
+    });	
+}
+
+exports.rejectRequest=function(req,res){
+   travelData.tData.findOne({ travelid: req.body.travelid },function(err, data) {
+    userData.uData.findOne({userid:data.userid},function(err, datau) {
+        var t = data;
+        t.status ="rejected";
+        t.save(function(err,datar) {
+              if (err)
+                console.log('error');
+              var transporter = nodemailer.createTransport({
+                service: 'Gmail',
+                auth: {
+                    user: 'dipgupta1986@gmail.com',
+                    pass: 'password'
+                }
             });
 
+               var mailOptions = {
+                    from: 'Dipesh Gupta✔ <dipgupta1986@gmail.com>', // sender address
+                    to: datau.email, // list of receivers
+                    subject: "Travel Request Quotation for request Id:"+data.travelid, // Subject line
+                    //text: 'Hello world ✔', // plaintext body
+                    html: createHtmlBody(datar) // html body
+                };
+                transporter.sendMail(mailOptions, function(error, info){
+                    if(error){
+                        console.log(error);
+                    }else{
+                        console.log('Message sent: ' + info.response);
+                    }
+                });
+            });
+    
+    
+        
+
     });   
-   function createHtmlBody(trequest){
+}); 
+}
+
+function createHtmlBody(trequest){
         var mailHtml="";
              mailHtml='<html><head><title>Travel Request</title></head><body><table>'+
             '<thead>'+
@@ -159,4 +180,3 @@ exports.uploadRequest=function(req,res){
     '<html>';
     return mailHtml;
    }
-}

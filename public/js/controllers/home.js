@@ -19,7 +19,7 @@ spa.controller('HomeCtrl', function($scope, $location, $rootScope, $http) {
                 $scope.username = $rootScope.username; 
                 if ($rootScope.role === 'Employee') {
                 	$location.path('/user');
-                } else if ($rootScope.role === 'Manger'){
+                } else if ($rootScope.role === 'Manager'){
                 	$location.path('/manager');
                 } else if ($rootScope.role === 'Agent') {
                 	$location.path('/agent');

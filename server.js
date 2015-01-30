@@ -9,6 +9,7 @@ var api = require('./routes/api');
 var user = require('./routes/user');
 var travel = require('./routes/travel');
 var agent = require('./routes/agent');
+var manager = require('./routes/manager');
 var app = express();
 
 
@@ -39,6 +40,9 @@ app.post('/agent/getNotifications', agent.getNotifications);
 app.post('/agent/getRequest', agent.getRequest);
 app.post('/agent/submitQuote', agent.submitQuote);
 app.post('/agent/uploadRequest', agent.uploadRequest);
+app.post('/manager/getNotifications', manager.getNotifications);
+app.post('/manager/getRequest', manager.getRequest);
+app.post('/manager/approveRequest', manager.approveRequest);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
