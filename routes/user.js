@@ -6,13 +6,13 @@ var userSchema = new mongoose.Schema ({
 });
 mongoose.connect('mongodb://localhost:27017/test');
 
-var uData = mongoose.model('userData', userSchema);
+var userData = mongoose.model('userDataTest', userSchema);
 
 exports.createUser = function (req, res) {	
-	var data = new uData ({
+	var data = new userData ({
 		username : req.body.username,
 		password : req.body.password,
-		role : 'Hacker'
+		role : req.body.role
 	});
 	data.save(function (err, data) {
 		if (err) {
@@ -25,7 +25,7 @@ exports.createUser = function (req, res) {
 
 exports.authenticateUser = function (req, res) {
 	var queryData = req.body.username;
-	uData.findOne({'username':queryData}, function (err, data) {
+	userData.findOne({'username':queryData}, function (err, data) {
 		if (err) {
 			console.log('Error : ',err)
 		}

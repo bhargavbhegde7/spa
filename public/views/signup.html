@@ -1,14 +1,32 @@
 <div class="page-header">
     <h2>Sign Up</h2>
 </div>
-<form class="form-group" id="signup-form">
+<form class="form-group" id="signup-form" name="signup_form">
     <div class="input-group">
-	    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-	    <input type="text" class="form-control" placeholder="Username" ng-model="formData.username">
+        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+        <input type="email" class="form-control" placeholder="Email ID" ng-model="formData.username">
     </div>
+
     <div class="input-group">
-	    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-	    <input type="password" class="form-control" placeholder="Password" ng-model="formData.password">
+        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+        <input type="password" class="form-control" placeholder="Password" ng-model="formData.password">
     </div>
-    <button class="btn btn-primary btn-group-sm form-submit-btn" ng-click="createUser()">Submit</button>
+    <div id="roles">
+        <label class="btn btn-primary">
+            <input type="radio" name="options" id="employee-role" ng-model="formData.role"> Employee
+        </label>
+        <label class="btn btn-primary">
+            <input type="radio" name="options" id="manager-role" ng-model="formData.role"> Manager
+        </label>
+        <label class="btn btn-primary">
+            <input type="radio" name="options" id="agent-role" ng-model="formData.role"> Agent
+        </label>
+    </div>
+    <div class="alert alert-danger center-block" id="signup-error-msg">
+        <small class="error" ng-show="signup_form.email.$error.required">
+             Your email is required.
+      </small>
+        <small ng-show="signup_form.email.$dirty && signup_form.email.$invalid">Enter a valid Email id.</small>
+    </div>
+    <button class="btn btn-success btn-group-sm form-submit-btn" ng-click="createUser()">Submit</button>
 </form>
