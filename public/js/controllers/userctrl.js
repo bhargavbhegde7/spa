@@ -39,8 +39,9 @@ spa.controller('UserCtrl', function($scope, $location, $rootScope,$http) {
     	$scope.travelRequest.userid = $rootScope.userid;
     	$scope.travelRequest.travelid = id;
 		$http.post('/travel/getRequest',$scope.travelRequest).success(function(data){
-			$scope.travelRequest=data;
-
+			$rootScope.travelRequest=data[0];
+			console.dir($rootScope.travelRequest);
+			$location.path('/travel/showRequest');
 		});
 	}
 });

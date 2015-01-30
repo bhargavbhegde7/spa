@@ -16,10 +16,14 @@ var travelSchema = new mongoose.Schema({
     remarks: String,
     timestamp: String,
     userRole: String,
-    status: String
+    status: String,
+    agentComments:String,
+    agentQuote:String
 });
 
 var travelData = mongoose.model('travelData', travelSchema, 'travelData');
+
+exports.tData=travelData;
 
 exports.newTravelRequest = function(req, res) {
     if (req.body.userRole === "Employee" || req.body.userRole === "Manager") {
@@ -40,7 +44,7 @@ exports.newTravelRequest = function(req, res) {
             remarks: req.body.remarks,
             timestamp: new Date(),
             userRole: req.body.userRole,
-            status: 'pendingApproval'
+            status: 'pendingQuote'
         });
 
         data.save(function(err, data) {
@@ -64,7 +68,7 @@ exports.getNotifications = function(req, res) {
 }
 exports.getRequest=function(req,res){
 	if (req.body.userRole === "Employee" || req.body.userRole === "Manager") {
-		var id=req.body.travelRequest.travelid;
+		var id=req.body.travelid;
 		travelData.find({"travelid":id}).exec(function (err, data) {
 		if (err) {
 			console.log('Error : ',err)
