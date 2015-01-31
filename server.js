@@ -43,6 +43,7 @@ app.post('/agent/uploadRequest', agent.uploadRequest);
 app.post('/manager/getNotifications', manager.getNotifications);
 app.post('/manager/getRequest', manager.getRequest);
 app.post('/manager/approveRequest', manager.approveRequest);
+app.post('/manager/rejectRequest', manager.rejectRequest);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,4 +1,6 @@
-<table>
+<div id="agent-request-table">
+    <button  class="btn btn-success" ng-click="goBack()">Go Back</button>
+    <table class="table table-hovers">
     <thead>
         <tr>
             <td>Mode of transport:</td>
@@ -60,17 +62,18 @@
         </tr>
         <tr>
             <td>Travel Quote:</td>
-            <td><input type="text" ng-model="trequest.agentQuote" /></td>
+            <td><input class="pull-left table-input" type="text" ng-model="trequest.agentQuote" required/></td>
         </tr>
         <tr>
             <td>Comment:</td>
-            <td><textarea rows="3" cols="50" ng-model="trequest.agentComments"></textarea></td>
+            <td><textarea class="pull-left table-input" rows="3" cols="50" ng-model="trequest.agentComments" required></textarea></td>
         </tr>
         <tr>
             <td colspan="2">
-                <input type="button" value="Submit Quote"  ng-click="submitQuote()" />
+                <input class="btn btn-primary center-block" type="button" value="Submit Quote"  ng-click="submitQuote()" />
             </td>
             
         </tr>
     </thead>
 </table>
+</div>

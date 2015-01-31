@@ -8,5 +8,9 @@ spa.controller('AgentShowRequestCtrl', function($scope, $location, $rootScope,$h
 			$location.path('/agent');
 		});
 	}
+
+	$scope.goBack=function(){
+		$location.path('/agent');
+	};
 	
 });

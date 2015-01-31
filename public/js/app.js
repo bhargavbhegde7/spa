@@ -37,6 +37,12 @@ spa.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     when('/manager/showRequest', {
         templateUrl: 'views/showmanagerrequest.html',
         controller: 'ManagerShowRequestCtrl'
+    }).
+    when('/logout', {
+        templateUrl: 'views/home.html',
+        controller: 'LogoutCtrl'
+    }).when('/about', {
+        templateUrl:'views/about.html'
     });
     
 }]);

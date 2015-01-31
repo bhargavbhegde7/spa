@@ -1,77 +1,82 @@
-<table>
-    <thead>
-        <tr>
-            <td>Mode of transport:</td>
-            <td>{{mrequest.transportMode}}</td>
-        </tr>
-        <tr>
-            <td>Travel date from:</td>
-            <td>{{mrequest.travelDateFrom}}</td>
-        </tr>
-        <tr>
-            <td>Travel date to:</td>
-            <td>{{mrequest.travelDateTo}}</td>
-        </tr>
-        <tr>
-            <td>Currency Type:</td>
-            <td>{{mrequest.currencyType}}</td>
-        </tr>
-        <tr>
-            <td>Currency Amount:</td>
-            <td>{{mrequest.currencyAmount}}</td>
-        </tr>
-        <tr>
-            <td>Phone Details:</td>
-            <td>{{mrequest.phoneDetail}}</td>
-        </tr>
-        <tr>
-            <td>Per Dime Details:</td>
-            <td>{{mrequest.perDime}}</td>
-        </tr>
-        <tr>
-            <td>Laundry Allowance Needed:</td>
-            <td>{{mrequest.laundryAllowance}}</td>
-        </tr>
-        <tr>
-            <td>Food Allowance Needed:</td>
-            <td>{{mrequest.foodAllowance}}</td>
-        </tr>
-        <tr>
-            <td>Meal Pref:</td>
-            <td>{{mrequest.mealType}}</td>
-        </tr>
-        <tr>
-            <td>Remarks:</td>
-            <td>{{mrequest.remarks}}</td>
-        </tr>
+<div id="manger-request-detail">
+    <button class="btn btn-success" ng-click="goBack()">Go Back</button>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Mode of transport:</td>
+                <td>{{mrequest.transportMode}}</td>
+            </tr>
+            <tr>
+                <td>Travel date from:</td>
+                <td>{{mrequest.travelDateFrom}}</td>
+            </tr>
+            <tr>
+                <td>Travel date to:</td>
+                <td>{{mrequest.travelDateTo}}</td>
+            </tr>
+            <tr>
+                <td>Currency Type:</td>
+                <td>{{mrequest.currencyType}}</td>
+            </tr>
+            <tr>
+                <td>Currency Amount:</td>
+                <td>{{mrequest.currencyAmount}}</td>
+            </tr>
+            <tr>
+                <td>Phone Details:</td>
+                <td>{{mrequest.phoneDetail}}</td>
+            </tr>
+            <tr>
+                <td>Per Dime Details:</td>
+                <td>{{mrequest.perDime}}</td>
+            </tr>
+            <tr>
+                <td>Laundry Allowance Needed:</td>
+                <td>{{mrequest.laundryAllowance}}</td>
+            </tr>
+            <tr>
+                <td>Food Allowance Needed:</td>
+                <td>{{mrequest.foodAllowance}}</td>
+            </tr>
+            <tr>
+                <td>Meal Pref:</td>
+                <td>{{mrequest.mealType}}</td>
+            </tr>
+            <tr>
+                <td>Remarks:</td>
+                <td>{{mrequest.remarks}}</td>
+            </tr>
 
-        <tr>
-            <td>Manager Email Id:</td>
-            <td>{{mrequest.managerEmail}}</td>
-        </tr>
+            <tr>
+                <td>Manager Email Id:</td>
+                <td>{{mrequest.managerEmail}}</td>
+            </tr>
 
-        <tr>
-            <td>mrequester Role:</td>
-            <td>{{mrequest.userRole}}</td>
-        </tr>
-        <tr>
-            <td>Current Status:</td>
-            <td>{{mrequest.status}}</td>
-        </tr>
-        <tr>
-            <td>Travel Quote:</td>
-            <td>{{mrequest.agentQuote}}</td>
-        </tr>
-        <tr>
-            <td>Agent Comment:</td>
-            <td>{{mrequest.agentComments}}</td>
-        </tr>
-        <tr>
-        <td colspan="2">
-        <input type="button" value="Approve" ng-click="approveTravelRequest(mrequest.travelid)" />
-        <input type="button" value="Reject" ng-click="rejectTravelRequest(mrequest.travelid)" />
-        <input type="button" value="Go Back" ng-click="goBack()" />
-        </td>
-        </tr>
-    </thead>
-</table>
+            <tr>
+                <td>mrequester Role:</td>
+                <td>{{mrequest.userRole}}</td>
+            </tr>
+            <tr>
+                <td>Current Status:</td>
+                <td>{{mrequest.status}}</td>
+            </tr>
+            <tr>
+                <td>Travel Quote:</td>
+                <td>{{mrequest.agentQuote}}</td>
+            </tr>
+            <tr>
+                <td>Agent Comment:</td>
+                <td>{{mrequest.agentComments}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="btn btn-success" type="button" value="Approve" ng-click="approveTravelRequest(mrequest.travelid)" />
+
+                </td>
+                <td>
+                    <input class="btn btn-success" type="button" value="Reject" ng-click="rejectTravelRequest(mrequest.travelid)" />
+                </td>
+            </tr>
+        </thead>
+    </table>
+</div>

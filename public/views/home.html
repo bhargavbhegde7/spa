@@ -11,13 +11,17 @@
         <form class="form-group" id="signup-form">
             <div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                <input type="text" class="form-control" placeholder="Username" ng-model="formData.username">
+                <input type="text" class="form-control" placeholder="Username" ng-model="formData.username" required/>
             </div>
             <div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                <input type="password" class="form-control" placeholder="Password" ng-model="formData.password">
+                <input type="password" class="form-control" placeholder="Password" ng-model="formData.password" required/>
             </div>
             <button class="btn btn-success btn-lg" id="home-log-btn" ng-click="authUser()">Sign In</button>
+            <div class="alert alert-warning" ng-show="errmsg" id="alert-signin">
+                <a class="close" data-dismiss="alert" ng-click="closeWarning()">&times;</a>
+                <strong>Error!</strong> Either user was not found or data input is incorrect.
+            </div>
         </form>
         <h4>OR</h4>
         <button class="btn btn-success btn-lg" id="home-sign-btn" ng-click="routeUser('signup')">Sign Up</button>

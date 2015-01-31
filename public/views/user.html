@@ -1,84 +1,109 @@
-<a href="" ng-click="userNav('request')">notification</a>
-<a href="" ng-click="userNav('form')">place a request</a>
-<a href="">logout</a>
+<div id="user-profile">
+    <ul id="sidebar-list">
+        <button ng-click="userNav('request')" ng-class="{active : isActive(showNots)}" class="btn btn-primary">Notification<span class="badge" ng-show="requestLengthChange != 0">{{requestLengthChange}}</span>
+        </button>
+        <button ng-click="userNav('form')" ng-class="{active : isActive(showForm)}" class="btn btn-primary">Place a Request</button>
+    </ul>
 
-<div id="user-notification" ng-show="showNots">
-    <table border="1">
-        <thead>
-            <tr>
-                <td>Request ID</td>
-                <td>Travel Date From</td>
-                <td>Status</td>
-                <td>Action</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="travelRequest in travelRequests">
-                <td>{{travelRequest.travelid}}</td>
-                <td>{{travelRequest.travelDateFrom}}</td>
-                <td>{{travelRequest.status}}</td>
-                <td>
-                    <input type="button" value="View" ng-click="showTravelRequest(travelRequest.travelid)">
-                </td>
-            </tr>
-        </tbody>
-    </table>
+
+
+    <div id="user-notification" ng-show="showNots" class="center-block">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td>Request ID</td>
+                    <td>Travel Date From</td>
+                    <td>Status</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="travelRequest in travelRequests">
+                    <td>{{travelRequest.travelid}}</td>
+                    <td>{{travelRequest.travelDateFrom}}</td>
+                    <td>{{travelRequest.status}}</td>
+                    <td>
+                        <input class="btn btn-default" type="button" value="View" ng-click="showTravelRequest(travelRequest.travelid)">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="user-request-form" ng-show="showForm">
+        <div class="row">
+            <h4 class="heading">How would like to travel ?</h4>
+            <label class="btn btn-success">
+                <input type="radio" value="Airways" name="transport_mode" ng-model="travelRequest.transportMode" /> Airways</label>
+            <label class="btn btn-success">
+                <input type="radio" value="Railway" name="transport_mode" ng-model="travelRequest.transportMode" /> Rail</label>
+            <label class="btn btn-success">
+                <input type="radio" value="Road" name="transport_mode" ng-model="travelRequest.transportMode" /> Road</label>
+        </div>
+        <div class="row">
+            <h4>When are you travelling ?</h4>
+            <input type="date" name="traveldatefrom" ng-model="travelRequest.travelDateFrom" />
+            <div class="row"></div>
+            <h4>And when are you coming back ?</h4>
+            <input type="date" name="traveldateto" ng-model="travelRequest.travelDateTo" />
+
+        </div>
+        <div class="row">
+            <h4>How much money you need ?</h4>
+            <input type="number" name="currency" ng-model="travelRequest.currencyAmount" />
+            <small id="form-currency-header">Type of currency you need : </small>
+            <select ng-model="travelRequest.currencyType" ng-options="currencyType as currencyType.label for currencyType in currencies">
+            </select>
+        </div>
+
+        <div class="row">
+            <h4>Your communication needs!</h4>
+            <label class="btn btn-success">
+                <input type="radio" value="SIM-Only" name="phoneDetail" ng-model="travelRequest.phoneDetail" />Only SIM Card</label>
+            <label class="btn btn-success">
+                <input type="radio" value="Mobile-with-SIM" name="phoneDetail" ng-model="travelRequest.phoneDetail" />Mobile with SIM card</label>
+            <label class="btn btn-success">
+                <input type="radio" value="Landline" name="phoneDetail" ng-model="travelRequest.phoneDetail" />Landline</label>
+        </div>
+
+        <div class="row">
+            <h4>Your preffered per Diem ?</h4>
+            <label class="btn btn-success">
+                <input type="radio" value="50-Diem-Currency" name="dailycurrency" ng-model="travelRequest.perDime" />50</label>
+            <label class="btn btn-success">
+                <input type="radio" value="100-Diem-Currency" name="dailycurrency" ng-model="travelRequest.perDime" />100</label>
+        </div>
+
+        <div class="row">
+            <h4>Your other allowance needs ?</h4>
+            <label class="btn btn-success">
+                <input type="checkbox" value="true" name="laundryneed" ng-model="travelRequest.laundryAllowance" />Laundry Allowance Needed</label>
+            <label class="btn btn-success">
+                <input type="checkbox" value="true" name="foodneed" ng-model="travelRequest.foodAllowance" />Food Allowance Needed</label>
+        </div>
+        <div class="row">
+            <h4>Are vegeterian or Non-Vegeterian ? No you can't have both!</h4>
+            <label class="btn btn-success">
+                <input type="radio" value="Vegeterian" name="mealpref" ng-model="travelRequest.mealType" />Veg</label>
+            <label class="btn btn-success">
+                <input type="radio" value="Non-Vegeterian" name="mealpref" ng-model="travelRequest.mealType" />N.Veg</label>
+        </div>
+        <div class="row">
+            <h4>Something you want us to know or do ?</h4>
+            <textarea class="pull-left" ng-model="travelRequest.remarks" id="comments-textarea"></textarea>
+        </div>
+
+        <div class="row">
+            <h4>Your Manager Email ? We need that, for your ticket approval.</h4>
+            <input type="email" name="mangeremail" ng-model="travelRequest.managerEmail" id="manager-mail" />
+
+        </div>
+        <div class="row">
+            <h4>Okay now ! We're all set to go ahead. Hit that <b>SUBMIT</b> button.</h4>
+            <button id="user-form-submit" class="btn btn-primary pull-left" ng-click="postRequest()">SUBMIT</button>
+        </div>
+    </div>
 </div>
-
-<div id="user-request-form" ng-show="showForm">
-    <h4>Mode of transport</h4>
-    <label>
-        <input type="radio" value="airways" name="transport_mode" ng-model="travelRequest.transportMode" /> Airways</label>
-    <label>
-        <input type="radio" value="railway" name="transport_mode" ng-model="travelRequest.transportMode" /> Rail</label>
-    <label>
-        <input type="radio" value="road" name="transport_mode" ng-model="travelRequest.transportMode" /> Road</label>
-    <h4>Travel Details</h4>
-    <br/>
-    <label>Travel date from
-        <input type="date" name="traveldatefrom" ng-model="travelRequest.travelDateFrom" />
-    </label>
-    <br/>
-    <label>Travel date to
-        <input type="date" name="traveldateto" ng-model="travelRequest.travelDateTo" />
-    </label>
-    <br/>
-    <label>
-        Currency Required
-        <input type="number" name="currency" ng-model="travelRequest.currencyAmount" />
-        <select ng-model="travelRequest.currencyType" ng-options="currencyType as currencyType.label for currencyType in currencies">
-        </select>
-    </label>
-    <br/>
-    <h4>Phone Details</h4>
-    <label>
-        <input type="radio" value="onlysim" name="phoneDetail" ng-model="travelRequest.phoneDetail" />Only SIM Card</label>
-    <label>
-        <input type="radio" value="mobilewithsim" name="phoneDetail" ng-model="travelRequest.phoneDetail" />Mobile with SIM card</label>
-    <label>
-        <input type="radio" value="landline" name="phoneDetail" ng-model="travelRequest.phoneDetail" />Landline</label>
-    <br/>
-    <h4>Per Dime Details</h4>
-    <label>
-        <input type="radio" value="halfAllowance" name="dailycurrency" ng-model="travelRequest.perDime" />50</label>
-    <label>
-        <input type="radio" value="fullAllowance" name="dailycurrency" ng-model="travelRequest.perDime" />100</label>
-    <br/>
-    <label>
-        <input type="checkbox" value="true" name="laundryneed" ng-model="travelRequest.laundryAllowance" />Laundry Allowance Needed</label>
-    <label>
-        <input type="checkbox" value="true" name="foodneed" ng-model="travelRequest.foodAllowance" />Food Allowance Needed</label>
-    <h4>Meal Pref</h4>
-    <label>
-        <input type="radio" value="mealprefveg" name="mealpref" ng-model="travelRequest.mealType" />Veg</label>
-    <label>
-        <input type="radio" value="mealprefnveg" name="mealpref" ng-model="travelRequest.mealType" />N.Veg</label>
-    <br/>
-    <h4>Remarks</h4>
-    <textarea ng-model="travelRequest.remarks"></textarea>
-    <br/>
-    <label>Manger Email ID
-        <input type="email" name="mangeremail" ng-model="travelRequest.managerEmail" />
-    </label>
-    <button class="btn btn-primary" ng-click="postRequest()">SUBMIT</button>
+<div class="alert alert-warning pull-right" id="push-notification-user" ng-click="userNav('request')">
+    You've <strong>{{requestLengthChange}}</strong> new notification(s).
 </div>

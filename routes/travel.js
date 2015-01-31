@@ -44,7 +44,7 @@ exports.newTravelRequest = function(req, res) {
             remarks: req.body.remarks,
             timestamp: new Date(),
             userRole: req.body.userRole,
-            status: 'pendingQuote'
+            status: 'PENDING-QUOTE'
         });
 
         data.save(function(err, data) {

@@ -1,8 +1,5 @@
-<a href="" ng-click="getTravelRequests( )">Notification</a>
-<a href="">logout</a>
-
-<div id="user-notification">
-    <table border="1">
+<div id="manager-notification">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <td>Request ID</td>
@@ -19,15 +16,18 @@
                 <td>{{travelRequest.travelDateFrom}}</td>
                 <td>{{travelRequest.status}}</td>
                 <td>
-                    <input type="button" value="View" ng-click="showTravelRequest(travelRequest.travelid)">
+                    <input class="btn btn-default" type="button" value="View" ng-click="showTravelRequest(travelRequest.travelid)">
                 </td>
                 <td>
-                    <input type="button" value="Approve" ng-click="approveTravelRequest(travelRequest.travelid)">
+                    <input class="btn btn-default" type="button" value="Approve" ng-click="approveTravelRequest(travelRequest.travelid)">
                 </td>
                 <td>
-                    <input type="button" value="Reject" ng-click="rejectTravelRequest(travelRequest.travelid)">
+                    <input class="btn btn-default" type="button" value="Reject" ng-click="rejectTravelRequest(travelRequest.travelid)">
                 </td>
             </tr>
         </tbody>
     </table>
+</div>
+<div class="alert alert-warning pull-right" id="push-notification-manager" ng-click="userNav('request')">
+    You've <strong>{{requestLengthChange}}</strong> new notification(s).
 </div>

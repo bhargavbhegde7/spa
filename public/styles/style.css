@@ -28,6 +28,7 @@ body {
 }
 #home-screen .btn {
     width: 70%;
+    margin-bottom: 10px;
 }
 #home-screen p {
     margin: 10px;
@@ -37,31 +38,133 @@ body {
 }
 #sign-up-in {
     background-color: rgba(255, 255, 255, 0.6);
-    height: 406px;
+    height: 100%;
     border-radius: 7px;
 }
-
 #roles label {
     margin: 12px;
 }
 #signup-form {
-    background-color: rgba(255,255,255,0.6);
+    background-color: rgba(255, 255, 255, 0.6);
     padding: 20px;
     border-radius: 5px;
 }
-
 #signup-error-msg {
     width: 60%;
+}
+#user-request-form {
+    padding-top: 20px;
 }
 #footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    /* Set the fixed height of the footer here */
-    
     height: 20px;
 }
-
-#user-request-form {
-    background-color: rgba(255,255,255,0.6);
+#sidebar-list button {
+    width: 20%;
+}
+#user-notifications, #user-request-form {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+}
+#user-sidebar-nav {
+    position: absolute;
+    width: 200px;
+    height: 100%;
+    background-color: black;
+    left: 0px;
+    top: 3.2em;
+}
+#sidebar-list {
+    list-style-type: none;
+    padding-left: 0px;
+}
+#sidebar-list li {
+    color: rgb(255, 255, 255);
+    font-family: sans-serif;
+    font-weight: 700;
+    text-align: left;
+    margin: 20px;
+    cursor: pointer;
+}
+#sidebar-list li.active {
+    background-color: rgb(59, 67, 66);
+}
+#sidebar-list li:hover {
+    color: #777;
+}
+#user-request-form h4 {
+    padding-left: 2%;
+    text-align: left;
+    font-weight: 700;
+}
+#user-request-form .row {
+    margin: 10px 0px 0px 0px;
+}
+#user-request-form input, #user-request-form textarea, #user-request-form select, #user-request-form label {
+    float: left;
+    margin-left: 2%;
+}
+#user-form-submit {
+    margin-bottom: 2%;
+    width: 20%;
+    margin-left: 2%;
+}
+#form-currency-header {
+    float: left;
+    font-weight: 700;
+    font-size: 15px;
+    margin-left: 25px;
+}
+#user-request-form textarea {
+    border-radius: 5px;
+    height: 80px;
+    width: 50%;
+}
+#user-notification thead, #agent-notification thead, #agent-request-table thead, #agent-request-table2 thead, #manager-notification thead, #manger-request-detail thead {
+    background-color: rgba(95, 158, 160, 1);
+    font-weight: 700;
+    color: #fff;
+}
+#agent-request-table .table-input {
+    color: black;
+    width: 60%;
+}
+#user-notification, #agent-notification, #agent-request-table, #agent-request-table2, #manager-notification, #manger-request-detail {
+    background-color: rgba(255, 255, 255, 0.7);
+    height: 100%;
+    padding: 20px;
+    border-radius: 5px;
+}
+#alert-signin {
+    margin: 10px
+}
+#agent-request-table2 tr td, #agent-request-table tr td, #manger-request-detail tr td {
+    text-align: left;
+    padding-left: 100px;
+}
+#manager-mail, #comments-textarea {
+    width: 50%;
+    height: 30px;
+}
+#push-notification-user, #push-notification-agent, #push-notification-manager {
+    bottom: -20px;
+    position: absolute;
+    right: 100px;
+    border-color: red;
+    display: none;
+    cursor: pointer;
+}
+#about-profile {
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 20px 0px 20px 0px;
+    border-radius: 5px;
+}
+#manoj-info, #dipesh-info, #rohit-info {
+    display: block;
+    background-color: rgba(8, 145, 130, 0.6);
+    width: 70%;
+    border-radius: 6px;
+    margin-bottom: 20px; 
 }
